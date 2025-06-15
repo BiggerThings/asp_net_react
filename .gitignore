@@ -1,0 +1,82 @@
+##############
+# .NET / ASP.NET Core
+##############
+
+# Build results
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# VS for Mac
+.vscode/
+.idea/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# DotNet CLI
+.project.lock.json
+project.lock.json
+
+# Rider IDE
+.idea/
+
+# Logs
+*.log
+
+# Database
+*.mdf
+*.ldf
+
+# Entity Framework
+Migrations/
+
+# Publish folder
+publish/
+
+# Others
+*.dbmdl
+*.bak
+*.backup
+*.nupkg
+*.snupkg
+
+##############
+# Node / React (ClientApp)
+##############
+
+# Node modules
+ClientApp/node_modules/
+
+# Build output
+ClientApp/dist/
+ClientApp/build/
+
+# Vite cache
+ClientApp/.vite/
+
+# Logs
+ClientApp/npm-debug.log*
+ClientApp/yarn-debug.log*
+ClientApp/yarn-error.log*
+
+# Env files
+ClientApp/.env
+ClientApp/.env.*.local
+
+# MacOS / System
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# TypeScript build cache
+*.tsbuildinfo
