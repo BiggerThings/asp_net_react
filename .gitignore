@@ -2,6 +2,10 @@
 # .NET / ASP.NET Core
 ##############
 
+##App settings
+appsettings.Development.json
+appsettings.json
+
 # Build results
 bin/
 obj/
