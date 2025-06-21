@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
+using StackifyMiddleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,7 +45,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseMyMiddleware(); // <== IMPORTANT: Use your custom middleware
-
+app.UseStackifyMiddleware();
 app.UseHttpsRedirection();
 
 app.UseCors("AllowFrontend"); // <== IMPORTANT
