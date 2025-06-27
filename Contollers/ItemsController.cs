@@ -6,11 +6,11 @@ namespace MyApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProductsController : ControllerBase
+    public class ItemsController : ControllerBase
     {
         private readonly IItemService _service;
 
-        public ProductsController(IItemService service)
+        public ItemsController(IItemService service)
         {
             _service = service;
         }
@@ -18,8 +18,30 @@ namespace MyApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var products = await _service.GetAllAsync();
-            return Ok(products);
+            var items = await _service.GetAllAsync();
+            return Ok(items);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            var item = await _service.GetByIdAsync(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return Ok(item);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(Item item)
+        {
+            if (item == null)
+            {
+                return BadRequest("Item cannot be null");
+            }
+            var createdItem = await _service.CreateAsync(item);
+            return CreatedAtAction(nameof(GetById), new { id = createdItem.Id }, createdItem);
         }
     }
 }

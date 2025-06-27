@@ -5,5 +5,7 @@ namespace MyApp.Services
     public interface IItemService
     {
         Task<IEnumerable<Item>> GetAllAsync();
+        Task<Item?> GetByIdAsync(int id);
+        Task<Item> CreateAsync(Item item);
     }
 }
