@@ -27,12 +27,11 @@ namespace MyApp.Services
             return await _context.Items.FindAsync(id);
         }
 
-        public async Task<Item> CreateAsync([FromBody] Item item);
+        public async Task<Item> CreateAsync(Item item)
         {
-            _context.Items.Add(item);
+            await _context.Items.AddAsync(item);
             await _context.SaveChangesAsync();
             return item;
         }
-
     }
 }

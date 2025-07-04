@@ -34,7 +34,7 @@ namespace MyApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Item item)
+        public async Task<IActionResult> Create([FromBody] Item item)
         {
             if (item == null)
             {
@@ -42,6 +42,7 @@ namespace MyApp.Controllers
             }
             var createdItem = await _service.CreateAsync(item);
             return CreatedAtAction(nameof(GetById), new { id = createdItem.Id }, createdItem);
+            //return Ok(createdItem);
         }
     }
 }
