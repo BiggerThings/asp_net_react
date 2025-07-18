@@ -33,5 +33,18 @@ namespace MyApp.Services
             await _context.SaveChangesAsync();
             return item;
         }
+
+        public async Task<Item?> UpdateAsync(int id, Item item)
+        {
+            var existingItem = await _context.Items.FindAsync(id);
+            if (existingItem == null)
+            {
+                return null;
+            }
+
+            existingItem.Title = item.Title;
+            await _context.SaveChangesAsync();
+            return existingItem;
+        }
     }
 }
