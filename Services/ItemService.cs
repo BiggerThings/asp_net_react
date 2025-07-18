@@ -46,5 +46,18 @@ namespace MyApp.Services
             await _context.SaveChangesAsync();
             return existingItem;
         }
+
+        public async Task<Item?> DeleteItem(int id)
+        {
+            var itemToDelete = await _context.Items.FindAsync(id);
+            if (itemToDelete == null)
+            {
+                return null;
+            }
+
+            _context.Items.Remove(itemToDelete);
+            await _context.SaveChangesAsync();
+            return itemToDelete;
+        }
     }
 }

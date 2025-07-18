@@ -46,7 +46,7 @@ namespace MyApp.Controllers
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Item item)
-        { 
+        {
             if (item == null || id != item.Id)
             {
                 return BadRequest("Item is null or ID mismatch");
@@ -54,6 +54,17 @@ namespace MyApp.Controllers
 
             var updatedItem = await _service.UpdateAsync(id, item);
             if (updatedItem == null)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var deletedItem = await _service.DeleteItem(id);
+            if (deletedItem == null)
             {
                 return NotFound();
             }
