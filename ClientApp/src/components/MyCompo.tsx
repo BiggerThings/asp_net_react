@@ -1,8 +1,8 @@
-function MyCompo() {
+function MyCompo({ name, age }: { name: string; age: number }) {
   return (
     <div>
       <h2>My Component Title</h2>
-      <p>This is a simple component.</p>
+      <p>Hello there, {name}. You are {age} years old.</p>
     </div>
   );
 }

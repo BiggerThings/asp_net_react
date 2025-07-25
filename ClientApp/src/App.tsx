@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/counter" element={<Counter />} />
           <Route path="/weather" element={<Weather />} />
-          <Route path="/mycompo" element={<MyCompo />} />
+          <Route path="/mycompo" element={<MyCompo name="John" age={30} />} />
         </Routes>
       </main>
       <Footer />
