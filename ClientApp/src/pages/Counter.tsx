@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useState } from "react";
+import Form from "../components/Form";
 
 function Counter() {
   const [count, setCount] = useState(0)
@@ -19,6 +20,7 @@ function Counter() {
             +
           </button>
         </div>
+        <Form />
 
     </div>
   )
