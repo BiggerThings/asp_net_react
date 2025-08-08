@@ -1,7 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 const Form = () => {
     const [txt, setTxt] = useState('');
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        inputRef.current?.focus();
+        console.log('Input focused on component mount');
+    }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setTxt(e.target.value);
@@ -17,7 +23,7 @@ const Form = () => {
       <h2>Form Component</h2>
       <p>This component demonstrates a form in React.</p>
       <form className="mt-4" onSubmit={handleSubmit}>
-        <input type="text" onChange={handleChange} className="border p-2 rounded" />
+        <input type="text" ref={inputRef} onChange={handleChange} className="border p-2 rounded" />
         <input type="submit"  value="submit" className="ml-2 bg-blue-500 text-white px-4 py-2 rounded cursor-pointer" />
       </form>
     </div>
