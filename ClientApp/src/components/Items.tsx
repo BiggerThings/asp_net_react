@@ -5,20 +5,16 @@ const Items = () => {
     const [players, setPlayers] = useState([]);
     const [newPlayer, setNewPlayer] = useState({ title: ''});
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.FormEvent<HTMLFormElement>) => {
         setNewPlayer({ title: e.target.value });
     }
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!newPlayer.title) return;
 
-        const response = await axios.post('http://localhost:5238/api/Items', newPlayer);
-
-        if (response.status === 200 || response.status === 204) {
-            alert('Pirate added successfully!');
-            setNewPlayer({ title: '' });
-        }
+        await axios.post('http://localhost:5238/api/Items', newPlayer);
+        setNewPlayer({ title: '' });
     }
 
     useEffect(() => {
@@ -28,7 +24,7 @@ const Items = () => {
             setPlayers(data);
         }
         getPlayers();
-    }, []);
+    }, [newPlayer]);
     return (
     <div className='mt-10'>
       <h3 className='text-lg font-semibold mb-2'>Items List</h3>
@@ -50,6 +46,7 @@ const Items = () => {
       <ul>
         {players && players.map((player) => (
             <li key={player.id} className='mb-1'>
+
                 <span className='font-bold'>{player.title}</span>
             </li>
         ))}
