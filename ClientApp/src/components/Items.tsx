@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import  Item  from './Item'
+import  PopUpItemForm  from './PopUpItemForm'
+import Item from './Item';
 
 const Items = () => {
     const [players, setPlayers] = useState([]);
@@ -29,7 +30,7 @@ const Items = () => {
     return (
     <div className='mt-10'>
       <h3 className='text-lg font-semibold mb-2'>Items List</h3>
-      <Item />
+      <Item item={{ title: "Hey", id: "1" }}/>
 
       <form>
         <input 
@@ -37,10 +38,10 @@ const Items = () => {
           value={newPlayer.title} 
           onChange={handleChange} 
           placeholder="Add new item"
-          className="border p-2 rounded"
+          className="border p-2 rounded w-80"
         />
         <input type="submit" value="Add"
-         className="text-white bg-blue-500 border p-2 rounded"
+         className="text-white bg-blue-500 border p-2 rounded ml-2"
          onClick={handleSubmit}
         />
       </form>
