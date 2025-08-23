@@ -30,7 +30,7 @@ const Items = () => {
     return (
     <div className='mt-10'>
       <h3 className='text-lg font-semibold mb-2'>Items List</h3>
-      <Item item={{ title: "Hey", id: "1" }}/>
+      <Item item={{ title: "Hey", id: 1 }}/>
 
       <form>
         <input 
