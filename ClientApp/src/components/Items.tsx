@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import  PopUpItemForm  from './PopUpItemForm'
 import Item from './Item';
 
 const Items = () => {
@@ -30,7 +29,6 @@ const Items = () => {
     return (
     <div className='mt-10'>
       <h3 className='text-lg font-semibold mb-2'>Items List</h3>
-      <Item item={{ title: "Hey", id: 1 }}/>
 
       <form>
         <input 
@@ -49,8 +47,7 @@ const Items = () => {
       <ul>
         {players && players.map((player) => (
             <li key={player.id} className='mb-1'>
-
-                <span className='font-bold'>{player.title}</span>
+                <Item item={player} />
             </li>
         ))}
       </ul>
