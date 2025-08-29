@@ -12,18 +12,21 @@ const Items = () => {
     const [players, setPlayers] = useState([]);
     const [newPlayer, setNewPlayer] = useState({ title: ''});
     const [titleToUpdate, setTitleToUpdate] = useState('');
+    const [idToDelete, setIdToDelete] = useState('');
 
     const handlePopUpItemInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
       setTitleToUpdate(e.target.value);
     }
 
-    const handlePopUpItemClick = (id: number, text: string) => {
-      alert('Update item button clicked! at ' + id + ' with text: ' + text);
+    const handlePopUpItemClick = async (id: number, text: string) => {
+      await axios.put(`http://localhost:5238/api/Items/${id}`, { id, title: text });
       setTitleToUpdate('');
     }
 
-    const handleDeleteButtonClick = (id: number) => {
-      alert('Delete item button clicked! at ' + id);
+    const handleDeleteButtonClick = async(id: number) => {
+      setIdToDelete(id);
+      await axios.delete(`http://localhost:5238/api/Items/${idToDelete}`);
+      setIdToDelete('');
     }
 
     const handleNewPlayerChange = (e: React.FormEvent<HTMLFormElement>) => {
@@ -44,7 +47,7 @@ const Items = () => {
             setPlayers(data);
         }
         getPlayers();
-    }, [newPlayer]);
+    }, [newPlayer, idToDelete, titleToUpdate]);
     return (
     <div className='mt-10'>
       <h3 className='text-lg font-semibold mb-2'>Items List</h3>
@@ -80,7 +83,7 @@ const Items = () => {
                         </div>
                     </PopoverContent>
                   </Popover>
-                  <Button variant="destructive" className="ml-2" onClick={() => handleDeleteButtonClick(player.id)}>Delete</Button>
+                  <Button variant="destructive" className="ml-2" onClick={async() => await handleDeleteButtonClick(player.id)}>Delete</Button>
                 </div>
             </li>
         ))}
